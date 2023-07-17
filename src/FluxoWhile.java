@@ -3,28 +3,30 @@ import java.util.Scanner;
 public class FluxoWhile {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int nota;
+        double somaNotas = 0;
+        double media;
+        int contador = 0;
 
-        while (true) {
-            System.out.print("Digite a nota (digite -1 para sair): ");
-            nota = scanner.nextInt();
-
-            if (nota == -1) {
-                break;
-            }
-
-            if (nota >= 7 && nota <= 10) {
-                System.out.println("Aprovado");
-            } else if (nota >= 5 && nota <= 6) {
-                System.out.println("Recuperação");
-            } else if (nota < 4) {
-                System.out.println("Reprovado");
-            } else {
-                System.out.println("Nota inválida");
-            }
+        while (contador < 4) {
+            System.out.print("Digite a nota " + (contador + 1) + ": ");
+            double nota = scanner.nextDouble();
+            somaNotas += nota;
+            contador++;
         }
 
-        System.out.println("Encerrando o programa");
+        media = somaNotas / 4;
+
+        if (media >= 7 && media <= 10) {
+            System.out.println("Média: " + media);
+            System.out.println("Situação: Aprovado");
+        } else if (media >= 5) {
+            System.out.println("Média: " + media);
+            System.out.println("Situação: Recuperação");
+        } else {
+            System.out.println("Média: " + media);
+            System.out.println("Situação: Reprovado");
+        }
+
         scanner.close();
     }
 }
